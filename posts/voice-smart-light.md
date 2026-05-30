@@ -34,11 +34,11 @@ cover: /code2real_blog/posts/voice-smart-light/cover.jpg
 
 <img :src="'/code2real_blog/posts/voice-smart-light/case-front.jpg'" alt="3D外壳正面" />
 
-![image-20260530213039727](C:\Users\32455\AppData\Roaming\Typora\typora-user-images\image-20260530213039727.png)
+<img :src="'/code2real_blog/posts/voice-smart-light/case-render-01.jpg'" alt="3D外壳渲染图 1" />
 
 <img :src="'/code2real_blog/posts/voice-smart-light/case-inside.jpg'" alt="3D外壳内部结构" />
 
-![image-20260530213057457](C:\Users\32455\AppData\Roaming\Typora\typora-user-images\image-20260530213057457.png)
+<img :src="'/code2real_blog/posts/voice-smart-light/case-render-02.jpg'" alt="3D外壳渲染图 2" />
 
 目前外壳还处在测试阶段，后续会根据实际装配情况调整螺丝孔位置、线材出口和模块固定方式。
 
