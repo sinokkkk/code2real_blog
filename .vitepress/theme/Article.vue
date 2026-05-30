@@ -233,6 +233,24 @@ onUnmounted(() => {
     line-height: 1.5em;
   }
 
+  img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  video {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 8px;
+    background: #000;
+  }
+
   li {
     margin-block-end: 0.3em;
   }
@@ -301,6 +319,7 @@ onUnmounted(() => {
 
 // inline code
 code {
+  font-family: var(--code-font-family);
   font-size: var(--code-font-size);
   border-radius: 4px;
   padding: 0.2em 0.4em;

@@ -38,7 +38,7 @@ html {
   --color-background: #eee;
   --color-border: #d0d7de;
   --code-line-height: 24px;
-  --code-font-family: monospace;
+  --code-font-family: "Cascadia Code", "Cascadia Mono", Consolas, monospace;
   --code-font-size: 15px;
 }
 

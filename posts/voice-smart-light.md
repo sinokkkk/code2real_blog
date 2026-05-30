@@ -2,7 +2,6 @@
 title: 语音识别智能开关灯开发记录
 date: 2026-05-30
 tags: [语音识别, ESP32, 智能家居, 3D打印]
-cover: /code2real_blog/posts/voice-smart-light/cover.jpg
 ---
 
 这是一个基于语音识别的智能开关灯项目。我们希望让灯具控制从传统按键变成更自然的语音交互：用户只需要说出开灯、关灯等指令，系统就能识别语音并控制灯光状态。
@@ -17,10 +16,6 @@ cover: /code2real_blog/posts/voice-smart-light/cover.jpg
 
 初期原型主要围绕语音识别模块进行搭建。我们先完成了语音模块与控制端之间的基本接线，用于验证语音指令能否稳定触发灯光开关。
 
-<img :src="'/code2real_blog/posts/voice-smart-light/wiring-01.jpg'" alt="初期语音识别模块接线 1" />
-
-
-
 这一阶段的重点不是外观，而是确认核心链路是否跑通：
 
 1. 语音识别模块能够识别预设指令。
@@ -31,14 +26,6 @@ cover: /code2real_blog/posts/voice-smart-light/cover.jpg
 ## 3D 外壳设计
 
 在原型电路能够工作后，我们开始设计 3D 打印外壳。外壳主要用于固定语音识别模块、电源接口和控制板，同时也让整个装置更接近可安装、可展示的状态。
-
-<img :src="'/code2real_blog/posts/voice-smart-light/case-front.jpg'" alt="3D外壳正面" />
-
-<img :src="'/code2real_blog/posts/voice-smart-light/case-render-01.jpg'" alt="3D外壳渲染图 1" />
-
-<img :src="'/code2real_blog/posts/voice-smart-light/case-inside.jpg'" alt="3D外壳内部结构" />
-
-<img :src="'/code2real_blog/posts/voice-smart-light/case-render-02.jpg'" alt="3D外壳渲染图 2" />
 
 目前外壳还处在测试阶段，后续会根据实际装配情况调整螺丝孔位置、线材出口和模块固定方式。
 
@@ -53,8 +40,6 @@ cover: /code2real_blog/posts/voice-smart-light/cover.jpg
 3. ESP32 接收控制信号。
 4. ESP32 通过 WiFi 与控制模块通信。
 5. 灯光模块执行开关动作。
-
-<img :src="'/code2real_blog/posts/voice-smart-light/esp32-wifi-module.jpg'" alt="ESP32 WiFi控制模块开发中" />
 
 ## 当前遇到的问题
 
