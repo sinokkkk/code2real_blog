@@ -10,7 +10,8 @@ export interface ThemeConfig {
 }
 export default defineConfigWithTheme<ThemeConfig>({
   lang: 'zh-CN',
-  base: '/vitepress-theme-sakura/',
+  title: 'sinok的代码到实物个人博客', 
+  base: '/code2real_blog/',
   // from https://codybontecou.com/tailwindcss-with-vitepress.html
   head: [
     // 字体支持
@@ -32,12 +33,15 @@ export default defineConfigWithTheme<ThemeConfig>({
     }
   },
   themeConfig: {
-    name: 'flaribbit',
+    name: 'sinok',
     cover: '/vitepress-theme-sakura/60651947_p0.jpg',
+    motto: '代码到实物-个人博客',
+    hello:'Hello SINOK',
     social: [
-      { icon: 'fa-github', url: 'https://github.com' },
-      { icon: 'fa-twitter', url: 'https://twitter.com' },
-      { icon: 'fa-weibo', url: 'https://weibo.com' },
+      { icon: 'fa-github', url: 'https://github.com/sinokkkk' },
+      //{ icon: 'fa-twitter', url: 'https://twitter.com' },
+      //{ icon: 'fa-weibo', url: 'https://weibo.com' },
+      { icon: 'fa-bilibili', url: 'https://bilibili.com' },
     ],
     waline: 'https://blog-waline-e7jqcxb9s-flaribbit.vercel.app/',
   }

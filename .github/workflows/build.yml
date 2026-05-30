@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - master
+      - main
     tags-ignore:
       - '**'
 jobs:
@@ -28,6 +28,4 @@ jobs:
         git add -A
         git commit -m autobuild
         git push -f https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git master:gh-pages
-    - uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
+    
