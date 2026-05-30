@@ -36,7 +36,8 @@ function getPost(md, file, postDir, asFeed = false) {
   }
 
   const src = fs.readFileSync(fullePath, 'utf-8')
-  const { data, excerpt } = matter(src, { excerpt: true })
+  const { data, content } = matter(src)
+  const excerpt = createExcerpt(content, data)
 
   const post = {
     title: data.title,
@@ -58,6 +59,56 @@ function getPost(md, file, postDir, asFeed = false) {
     post
   })
   return post
+}
+
+function createExcerpt(content, data) {
+  if (typeof data.description === 'string' && data.description.trim()) {
+    return data.description.trim()
+  }
+
+  const beforeMore = content.split(/<!--\s*more\s*-->/i)[0]
+  const blocks = []
+  let current = []
+  let inFence = false
+
+  for (const line of beforeMore.split(/\r?\n/)) {
+    const trimmed = line.trim()
+
+    if (trimmed.startsWith('```')) {
+      inFence = !inFence
+      continue
+    }
+    if (inFence) continue
+
+    if (!trimmed) {
+      pushExcerptBlock(blocks, current)
+      current = []
+      if (blocks.length >= 2) break
+      continue
+    }
+
+    current.push(line)
+  }
+
+  pushExcerptBlock(blocks, current)
+  return blocks.slice(0, 2).join('\n\n')
+}
+
+function pushExcerptBlock(blocks, lines) {
+  const text = lines.join('\n').trim()
+  if (!text || !isExcerptTextBlock(text)) return
+  blocks.push(text)
+}
+
+function isExcerptTextBlock(text) {
+  return ![
+    /^#/,
+    /^</,
+    /^<!--/,
+    /^\|/,
+    /^[-*+]\s+/,
+    /^\d+\.\s+/
+  ].some((pattern) => pattern.test(text))
 }
 
 function checkTags() {
