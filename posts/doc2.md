@@ -1,7 +1,7 @@
 ---
 title: 测试文档
 tags: [测试, 算法, 测试1, 测试2, 测试3, 测试4, 测试5, 测试6, 测试7]
-cover: /vitepress-theme-sakura/60651947_p0.jpg
+cover: /code2real_blog/60651947_p0.jpg
 ---
 
 ## 代码测试

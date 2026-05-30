@@ -34,7 +34,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
   themeConfig: {
     name: 'sinok',
-    cover: '/vitepress-theme-sakura/60651947_p0.jpg',
+    cover: '/code2real_blog/60651947_p0.jpg',
     motto: '代码到实物-个人博客',
     hello:'Hello SINOK',
     social: [
