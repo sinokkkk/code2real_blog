@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 6 | ESP32 嵌入式入门 | sinok的代码到实物个人博客</title>
+    <meta name="description" content="A VitePress site">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/code2real_blog/assets/style.AyN1panr.css" as="style">
+    <link rel="preload stylesheet" href="/code2real_blog/vp-icons.css" as="style">
+    
+    <script type="module" src="/code2real_blog/assets/app.CkGLEla4.js"></script>
+    <link rel="modulepreload" href="/code2real_blog/assets/chunks/theme.C5aS6jDI.js">
+    <link rel="modulepreload" href="/code2real_blog/assets/chunks/framework.jfF5glnW.js">
+    <link rel="modulepreload" href="/code2real_blog/assets/posts_week6.md.CX8hkwXL.lean.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC">
+    <script src="https://cdn.jsdelivr.net/npm/@waline/client@1.5.4/dist/Waline.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><!--[--><header><span class="brand"></span><span class="container"><span class="menu"><ul><!--[--><li><a href="/code2real_blog/"><span><i class="fa fa-home"></i> 首页</span></a></li><li><a href="/code2real_blog/tags/"><span><i class="fa fa-tag"></i> 标签</span></a></li><li><a href="/code2real_blog/readme.html"><span><i class="fa fa-leaf"></i> 关于</span></a></li><!--]--></ul></span></span><span class="other"><a class="search"><i class="fa fa-search"></i></a></span></header><aside></aside><main><a href="#" class="totop" style="top:-900px;" aria-label="to-top"></a><!--[--><div class="abanner" style="background-image: url(/code2real_blog/posts/week6/xiucai.jpg)"><div class="titlebox"><h1 class="title">Week 6 | ESP32 嵌入式入门</h1><div class="info">sinok · 更新于 2026-04-07 · 0 次阅读</div></div></div><div class="article"><div style="position:relative;" class="content"><div><p>第六周开始进入 ESP32 嵌入式开发。本周主要熟悉开发板连接、程序上传、GPIO 控制和串口调试。</p><hr><img src="/code2real_blog/posts/week6/xiucai.jpg" alt="Week 6 image"><h2 id="本周学习内容" tabindex="-1">本周学习内容 <a class="header-anchor" href="#本周学习内容" aria-label="Permalink to &quot;本周学习内容&quot;">​</a></h2><p>本周的学习对象从建模和制作转向嵌入式程序。ESP32 的特点是代码会直接影响硬件状态，因此调试时不能只看程序是否编译通过，还要看板子、引脚和外设是否配合正确。</p><p>课程中主要学习了开发环境配置、板型选择、端口识别、程序上传、串口监视器使用，以及 <code>setup()</code> 和 <code>loop()</code> 的基本结构。代码部分练习了变量、条件判断、循环、函数调用和 GPIO 输出控制。</p><h2 id="实践过程" tabindex="-1">实践过程 <a class="header-anchor" href="#实践过程" aria-label="Permalink to &quot;实践过程&quot;">​</a></h2><p>实践从最基础的流程开始：连接开发板，选择正确端口，上传示例程序，再通过串口观察运行信息。随后尝试控制 LED 状态，修改延时时间，切换不同引脚输出，逐步熟悉 ESP32 的执行节奏。</p><p>这些练习规模不大，但帮助我建立了一个基本对应关系：代码中的引脚编号要对应实际接线，程序中的状态变化要能在硬件上观察到，串口输出则用来确认程序是否按预期执行。</p><h2 id="遇到的问题" tabindex="-1">遇到的问题 <a class="header-anchor" href="#遇到的问题" aria-label="Permalink to &quot;遇到的问题&quot;">​</a></h2><p>本周的问题主要来自软硬件同时存在变量。程序可以成功上传，并不代表功能一定正确。端口选错、板型不匹配、波特率不一致、引脚编号理解错误，都会导致结果和预期不一致。</p><p>另一个困难是排查顺序。以前写普通程序时，问题大多集中在代码逻辑；现在还要检查接线、供电、外设状态和开发板配置。信息量一下变多，排错需要更有耐心，也更需要记录每一次修改。</p><h2 id="本周收获" tabindex="-1">本周收获 <a class="header-anchor" href="#本周收获" aria-label="Permalink to &quot;本周收获&quot;">​</a></h2><p>通过本周练习，我初步掌握了 ESP32 的基本开发流程，也理解了嵌入式开发和普通软件编写的区别。这里的程序不是只在屏幕里运行，而是要和真实硬件产生对应关系。</p><p>本周虽然还没有完成完整作品，但基础流程已经跑通。能稳定完成上传、串口查看和简单 GPIO 控制，后续才有条件继续接入传感器、舵机和网络功能。</p><hr></div></div><div class="content nav"><span><a href="/code2real_blog/posts/week7.html"><i class="fa fa-angle-left"></i> Week 7 | ESP32 联网控制舵机小成品</a></span><span><a href="/code2real_blog/posts/week5.html">Week 5 | 3D 建模到 3D 打印实物 <i class="fa fa-angle-right"></i></a></span></div><div id="waline"></div><div class="toc"><ol><!--[--><!--]--></ol></div></div><!--]--></main><!--]--></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"deploy_notes.md\":\"BzuJr7uV\",\"index.md\":\"DHRZloAZ\",\"posts_comming-soon.md\":\"DMJToM25\",\"posts_week1.md\":\"BtqA22d5\",\"posts_week10.md\":\"DmNL6-5V\",\"posts_week11.md\":\"Bi4orkO_\",\"posts_week12.md\":\"mASR0T5u\",\"posts_week2.md\":\"Dr9KDjvN\",\"posts_week3.md\":\"BZzN4VdT\",\"posts_week4.md\":\"DJm7QQq9\",\"posts_week5.md\":\"zBA0lA3D\",\"posts_week6.md\":\"CX8hkwXL\",\"posts_week7.md\":\"DG0ooVjz\",\"posts_week9.md\":\"EK2_BD7r\",\"posts_中期项目.md\":\"Bm1iDJnq\",\"posts_期末项目.md\":\"iD3A88g6\",\"readme.md\":\"D6TKLvuY\",\"tags_index.md\":\"DuiV8AC1\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"zh-CN\",\"dir\":\"ltr\",\"title\":\"sinok的代码到实物个人博客\",\"description\":\"A VitePress site\",\"base\":\"/code2real_blog/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"name\":\"sinok\",\"cover\":\"/code2real_blog/60651947_p0.jpg\",\"motto\":\"代码到实物-个人博客\",\"hello\":\"Hello SINOK\",\"social\":[{\"icon\":\"fa-github\",\"url\":\"https://github.com/sinokkkk\"},{\"icon\":\"fa-bilibili\",\"url\":\"https://bilibili.com\"}],\"waline\":\"https://blog-waline-e7jqcxb9s-flaribbit.vercel.app/\"},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>

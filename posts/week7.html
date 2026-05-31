@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 7 | ESP32 联网控制舵机小成品 | sinok的代码到实物个人博客</title>
+    <meta name="description" content="A VitePress site">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/code2real_blog/assets/style.AyN1panr.css" as="style">
+    <link rel="preload stylesheet" href="/code2real_blog/vp-icons.css" as="style">
+    
+    <script type="module" src="/code2real_blog/assets/app.CkGLEla4.js"></script>
+    <link rel="modulepreload" href="/code2real_blog/assets/chunks/theme.C5aS6jDI.js">
+    <link rel="modulepreload" href="/code2real_blog/assets/chunks/framework.jfF5glnW.js">
+    <link rel="modulepreload" href="/code2real_blog/assets/posts_week7.md.DG0ooVjz.lean.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC">
+    <script src="https://cdn.jsdelivr.net/npm/@waline/client@1.5.4/dist/Waline.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><!--[--><header><span class="brand"></span><span class="container"><span class="menu"><ul><!--[--><li><a href="/code2real_blog/"><span><i class="fa fa-home"></i> 首页</span></a></li><li><a href="/code2real_blog/tags/"><span><i class="fa fa-tag"></i> 标签</span></a></li><li><a href="/code2real_blog/readme.html"><span><i class="fa fa-leaf"></i> 关于</span></a></li><!--]--></ul></span></span><span class="other"><a class="search"><i class="fa fa-search"></i></a></span></header><aside></aside><main><a href="#" class="totop" style="top:-900px;" aria-label="to-top"></a><!--[--><div class="abanner" style="background-image: url(/code2real_blog/posts/week7/tung.jpg)"><div class="titlebox"><h1 class="title">Week 7 | ESP32 联网控制舵机小成品</h1><div class="info">sinok · 更新于 2026-04-14 · 0 次阅读</div></div></div><div class="article"><div style="position:relative;" class="content"><div><p>第七周继续进行 ESP32 实践。本周把 WiFi 联网和舵机控制组合起来，完成一个可以实际响应指令的小成品。</p><hr><img src="/code2real_blog/posts/week7/tung.jpg" alt="Week 7 image"><h2 id="本周学习内容" tabindex="-1">本周学习内容 <a class="header-anchor" href="#本周学习内容" aria-label="Permalink to &quot;本周学习内容&quot;">​</a></h2><p>本周的重点是把上一周的基础控制扩展成一个小系统。开发板需要先接入 WiFi，再根据网络端传来的控制信息改变舵机角度。相比单独点亮 LED，这类任务已经包含连接、解析、执行三个环节。</p><p>学习内容主要包括 ESP32 的 WiFi 连接流程、舵机控制方式、控制指令处理和串口调试。这里不再只是验证单个语法点，而是检查不同模块能否在同一个程序中稳定配合。</p><h2 id="实践过程" tabindex="-1">实践过程 <a class="header-anchor" href="#实践过程" aria-label="Permalink to &quot;实践过程&quot;">​</a></h2><p>实践中先单独确认 ESP32 能够连接网络，再测试舵机是否能按指定角度转动。两个部分都能运行后，再把 WiFi 逻辑和舵机控制逻辑合并，形成一个完整流程。</p><p>调试时主要依靠串口输出观察状态，例如是否成功连接 WiFi、是否收到控制指令、指令解析结果是什么，以及舵机动作是否与预期一致。这个过程比上一周更接近真实项目，因为问题往往出现在模块交界处。</p><h2 id="遇到的问题" tabindex="-1">遇到的问题 <a class="header-anchor" href="#遇到的问题" aria-label="Permalink to &quot;遇到的问题&quot;">​</a></h2><p>本周最明显的问题是故障来源变多。舵机不动时，原因可能是供电不足、信号线接错、控制角度设置不合理，也可能是网络指令根本没有传到程序里。不能看到现象就直接改代码，必须先判断问题在哪一层。</p><p>另外，舵机对供电和信号比较敏感。如果供电不稳定，程序逻辑正确也可能出现动作异常。这个问题提醒我，嵌入式项目不能只看代码，还要把硬件条件当成系统的一部分。</p><h2 id="本周收获" tabindex="-1">本周收获 <a class="header-anchor" href="#本周收获" aria-label="Permalink to &quot;本周收获&quot;">​</a></h2><p>本周让我从基础控制推进到了小型系统实现。ESP32 不再只是单独控制一个引脚，而是同时承担联网、处理指令和驱动执行机构的任务。</p><p>这个小成品规模不大，但意义比较明确：它把代码、网络和硬件动作串成了完整链路。后续如果继续完善，可以在控制界面、动作稳定性和异常处理上继续优化。</p><p><video src="/code2real_blog/posts/week7/1.mp4" controls></video></p></div></div><div class="content nav"><span><a href="/code2real_blog/posts/week9.html"><i class="fa fa-angle-left"></i> Week 9 | 立创 EDA 与校庆 PCB 设计</a></span><span><a href="/code2real_blog/posts/week6.html">Week 6 | ESP32 嵌入式入门 <i class="fa fa-angle-right"></i></a></span></div><div id="waline"></div><div class="toc"><ol><!--[--><!--]--></ol></div></div><!--]--></main><!--]--></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"deploy_notes.md\":\"BzuJr7uV\",\"index.md\":\"DHRZloAZ\",\"posts_comming-soon.md\":\"DMJToM25\",\"posts_week1.md\":\"BtqA22d5\",\"posts_week10.md\":\"DmNL6-5V\",\"posts_week11.md\":\"Bi4orkO_\",\"posts_week12.md\":\"mASR0T5u\",\"posts_week2.md\":\"Dr9KDjvN\",\"posts_week3.md\":\"BZzN4VdT\",\"posts_week4.md\":\"DJm7QQq9\",\"posts_week5.md\":\"zBA0lA3D\",\"posts_week6.md\":\"CX8hkwXL\",\"posts_week7.md\":\"DG0ooVjz\",\"posts_week9.md\":\"EK2_BD7r\",\"posts_中期项目.md\":\"Bm1iDJnq\",\"posts_期末项目.md\":\"iD3A88g6\",\"readme.md\":\"D6TKLvuY\",\"tags_index.md\":\"DuiV8AC1\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"zh-CN\",\"dir\":\"ltr\",\"title\":\"sinok的代码到实物个人博客\",\"description\":\"A VitePress site\",\"base\":\"/code2real_blog/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"name\":\"sinok\",\"cover\":\"/code2real_blog/60651947_p0.jpg\",\"motto\":\"代码到实物-个人博客\",\"hello\":\"Hello SINOK\",\"social\":[{\"icon\":\"fa-github\",\"url\":\"https://github.com/sinokkkk\"},{\"icon\":\"fa-bilibili\",\"url\":\"https://bilibili.com\"}],\"waline\":\"https://blog-waline-e7jqcxb9s-flaribbit.vercel.app/\"},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>

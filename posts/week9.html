@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 9 | 立创 EDA 与校庆 PCB 设计 | sinok的代码到实物个人博客</title>
+    <meta name="description" content="A VitePress site">
+    <meta name="generator" content="VitePress v1.6.4">
+    <link rel="preload stylesheet" href="/code2real_blog/assets/style.AyN1panr.css" as="style">
+    <link rel="preload stylesheet" href="/code2real_blog/vp-icons.css" as="style">
+    
+    <script type="module" src="/code2real_blog/assets/app.CkGLEla4.js"></script>
+    <link rel="modulepreload" href="/code2real_blog/assets/chunks/theme.C5aS6jDI.js">
+    <link rel="modulepreload" href="/code2real_blog/assets/chunks/framework.jfF5glnW.js">
+    <link rel="modulepreload" href="/code2real_blog/assets/posts_week9.md.EK2_BD7r.lean.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC">
+    <script src="https://cdn.jsdelivr.net/npm/@waline/client@1.5.4/dist/Waline.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><!--[--><header><span class="brand"></span><span class="container"><span class="menu"><ul><!--[--><li><a href="/code2real_blog/"><span><i class="fa fa-home"></i> 首页</span></a></li><li><a href="/code2real_blog/tags/"><span><i class="fa fa-tag"></i> 标签</span></a></li><li><a href="/code2real_blog/readme.html"><span><i class="fa fa-leaf"></i> 关于</span></a></li><!--]--></ul></span></span><span class="other"><a class="search"><i class="fa fa-search"></i></a></span></header><aside></aside><main><a href="#" class="totop" style="top:-900px;" aria-label="to-top"></a><!--[--><div class="abanner" style="background-image: url(/code2real_blog/posts/week9/shit.jpg)"><div class="titlebox"><h1 class="title">Week 9 | 立创 EDA 与校庆 PCB 设计</h1><div class="info">sinok · 更新于 2026-04-28 · 0 次阅读</div></div></div><div class="article"><div style="position:relative;" class="content"><div><p>第九周开始进入 PCB 设计。本周使用立创 EDA 完成西南交通大学校庆主题电路板设计，重点是熟悉从原理图到 PCB 版图的基本流程。</p><hr><img src="/code2real_blog/posts/week9/shit.jpg" alt="Week 9 image"><h2 id="本周学习内容" tabindex="-1">本周学习内容 <a class="header-anchor" href="#本周学习内容" aria-label="Permalink to &quot;本周学习内容&quot;">​</a></h2><p>本周主要学习立创 EDA 的基础操作，包括新建工程、绘制原理图、选择元件封装、生成 PCB、布线以及检查设计规则。相比前面 ESP32 的连线实验，PCB 设计要求把临时接线转化为可以制造的固定电路。</p><p>本次任务以西南交通大学校庆为主题，需要在功能电路之外加入一定的纪念性设计。也就是说，电路板既要能表达基本电气连接，又要在外形、丝印和布局上体现校庆元素。</p><h2 id="实践过程" tabindex="-1">实践过程 <a class="header-anchor" href="#实践过程" aria-label="Permalink to &quot;实践过程&quot;">​</a></h2><p>实践中先完成原理图部分，确认元件之间的连接关系，再为元件匹配合适封装。封装确认后进入 PCB 页面，将元件摆放到板框内，并根据连线关系进行布线。</p><p>在布局时，我没有直接把元件随意放满板面，而是先确定主要视觉区域和功能区域。校庆相关文字、标识和装饰内容放在较醒目的位置，电气元件则尽量保持连线简洁，避免布线在板面上过度交叉。</p><h2 id="遇到的问题" tabindex="-1">遇到的问题 <a class="header-anchor" href="#遇到的问题" aria-label="Permalink to &quot;遇到的问题&quot;">​</a></h2><p>本周最容易出问题的是封装匹配。原理图符号只说明电气关系，真正制造时还要看封装尺寸、引脚间距和焊盘位置。如果封装选错，电路在软件里看似正确，实际焊接时就会直接出问题。</p><p>另一个问题是美观和布线之间的冲突。为了保留校庆主题效果，某些区域不适合放太多走线；但如果只考虑视觉，线路又可能绕得很乱。最后只能在布局阶段反复调整，把元件位置、丝印内容和走线路径一起考虑。</p><h2 id="本周收获" tabindex="-1">本周收获 <a class="header-anchor" href="#本周收获" aria-label="Permalink to &quot;本周收获&quot;">​</a></h2><p>第九周让我第一次完整接触 PCB 设计流程。原理图、封装、布局、布线和规则检查之间是连续关系，前一步处理不稳，后面都会受到影响。</p><p>这次校庆电路板设计也让我认识到，PCB 不只是电路载体，它同时具有结构和表达属性。设计时既要保证电气连接可靠，也要考虑制造、焊接和最终展示效果。</p><hr><h3 id="作业" tabindex="-1">作业： <a class="header-anchor" href="#作业" aria-label="Permalink to &quot;作业：&quot;">​</a></h3><p>运用ai，设计led电子徽章☆含校庆元素☆4or5个元件的☆标注尺寸☆线条宽度1mm，拐弯必须45°要求提交两张图：PCB图和3D预览图</p><img src="/code2real_blog/posts/week9/1.png" alt="Week 9 image"><img src="/code2real_blog/posts/week9/2.png" alt="Week 9 image"></div></div><div class="content nav"><span><a href="/code2real_blog/posts/week10.html"><i class="fa fa-angle-left"></i> Week 10 | PCB 进阶设计与铺铜</a></span><span><a href="/code2real_blog/posts/week7.html">Week 7 | ESP32 联网控制舵机小成品 <i class="fa fa-angle-right"></i></a></span></div><div id="waline"></div><div class="toc"><ol><!--[--><!--]--></ol></div></div><!--]--></main><!--]--></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"deploy_notes.md\":\"BzuJr7uV\",\"index.md\":\"DHRZloAZ\",\"posts_comming-soon.md\":\"DMJToM25\",\"posts_week1.md\":\"BtqA22d5\",\"posts_week10.md\":\"DmNL6-5V\",\"posts_week11.md\":\"Bi4orkO_\",\"posts_week12.md\":\"mASR0T5u\",\"posts_week2.md\":\"Dr9KDjvN\",\"posts_week3.md\":\"BZzN4VdT\",\"posts_week4.md\":\"DJm7QQq9\",\"posts_week5.md\":\"zBA0lA3D\",\"posts_week6.md\":\"CX8hkwXL\",\"posts_week7.md\":\"DG0ooVjz\",\"posts_week9.md\":\"EK2_BD7r\",\"posts_中期项目.md\":\"Bm1iDJnq\",\"posts_期末项目.md\":\"iD3A88g6\",\"readme.md\":\"D6TKLvuY\",\"tags_index.md\":\"DuiV8AC1\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"zh-CN\",\"dir\":\"ltr\",\"title\":\"sinok的代码到实物个人博客\",\"description\":\"A VitePress site\",\"base\":\"/code2real_blog/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"name\":\"sinok\",\"cover\":\"/code2real_blog/60651947_p0.jpg\",\"motto\":\"代码到实物-个人博客\",\"hello\":\"Hello SINOK\",\"social\":[{\"icon\":\"fa-github\",\"url\":\"https://github.com/sinokkkk\"},{\"icon\":\"fa-bilibili\",\"url\":\"https://bilibili.com\"}],\"waline\":\"https://blog-waline-e7jqcxb9s-flaribbit.vercel.app/\"},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  </body>
+</html>
