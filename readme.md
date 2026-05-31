@@ -14,4 +14,4 @@
 
  				
 
-![sigmma](\sigmma.jpg)
+<img :src="'/code2real_blog/sigmma.jpg'" alt="Week 1 image" />
